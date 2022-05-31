@@ -39,19 +39,24 @@ function updateProgress(){
         sec='0'+String(sec);
     }
     timestamp.innerText=min+':'+sec;
+
+    // console.log(progress.value);
+    // console.log(typeof progress.value);
+    // console.log(typeof parseInt(progress.value));
+    // console.log(video.duration);
+    // console.log(typeof video.duration);
 }
 
 function setVideoProgress(){
-    console.log('Hii');
-    video.currentTime=+(progress.value*video.duration)/100;
+
+    video.currentTime=(parseInt(progress.value)*video.duration)/100;
 }
 
 video.addEventListener('click',toggleVideoStatus);
 video.addEventListener('play',updateIcon);
 video.addEventListener('pause',updateIcon);
 video.addEventListener('timeupdate',updateProgress);
-video.addEventListener('change',setVideoProgress);
+progress.addEventListener('change',setVideoProgress);
 
 play.addEventListener('click',toggleVideoStatus);
 stop.addEventListener('click',stopVideo);
-
