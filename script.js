@@ -4,7 +4,7 @@ const stop=document.querySelector('#stop');
 const progress=document.querySelector('#progress');
 const timestamp=document.querySelector('#timestamp');
 
-
+// Functions
 function toggleVideoStatus(){
     if(video.paused){
         video.play();
@@ -39,24 +39,17 @@ function updateProgress(){
         sec='0'+String(sec);
     }
     timestamp.innerText=min+':'+sec;
-
-    // console.log(progress.value);
-    // console.log(typeof progress.value);
-    // console.log(typeof parseInt(progress.value));
-    // console.log(video.duration);
-    // console.log(typeof video.duration);
 }
 
 function setVideoProgress(){
-
     video.currentTime=(parseInt(progress.value)*video.duration)/100;
 }
 
+// Event Listeners
 video.addEventListener('click',toggleVideoStatus);
 video.addEventListener('play',updateIcon);
 video.addEventListener('pause',updateIcon);
 video.addEventListener('timeupdate',updateProgress);
 progress.addEventListener('change',setVideoProgress);
-
 play.addEventListener('click',toggleVideoStatus);
 stop.addEventListener('click',stopVideo);
